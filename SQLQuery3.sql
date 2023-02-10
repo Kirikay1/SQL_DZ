@@ -4,7 +4,8 @@ SELECT Snum
 FROM STD
 WHERE Kolvo > SOME (SELECT MAX(Kolvo)
 					FROM STD 
-					WHERE Snum = 'S1')
+					WHERE Snum = 'S1'AND Tnum = SOME (SELECT Tnum
+													   FROM STD))
 GO
 --2
 SELECT Snum
@@ -23,12 +24,12 @@ INSERT INTO TovarTemp
 SELECT T.Tname
 FROM T
 WHERE T.Price > 1000 AND
-T.EdIzm = 'пачка'
+T.EdIzm = 'ГЇГ Г·ГЄГ '
 GO
 --4
 UPDATE T 
 SET Price = Price - ((Price / 100) * 15)
-WHERE T.EdIzm = 'пачка, 10 кг'
+WHERE T.EdIzm = 'ГЇГ Г·ГЄГ , 10 ГЄГЈ'
 GO
 --5
 DELETE FROM S
