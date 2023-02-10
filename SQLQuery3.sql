@@ -4,8 +4,9 @@ SELECT Snum
 FROM STD
 WHERE Kolvo > SOME (SELECT MAX(Kolvo)
 					FROM STD 
-					WHERE Snum = 'S1'AND Tnum = SOME (SELECT Tnum
-													   FROM STD))
+					WHERE Snum = 'S1'
+					AND Tnum = SOME (SELECT Tnum
+									 FROM STD))
 GO
 --2
 SELECT Snum
