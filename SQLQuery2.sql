@@ -10,7 +10,7 @@ FROM S
 WHERE (S.City='Москва')
 GO
 --3
-SELECT SUM(T.Price)
+SELECT SUM(T.Price * STD.Kolvo) AS SUM_Price
 FROM T, STD
 WHERE (T.Tnum = STD.Tnum) AND
 (STD.Dnum = 'D1')
