@@ -39,13 +39,13 @@ WHERE (S.Snum = STD.Snum) AND
 GO
 --5 один из них
 SELECT S.City
-FROM  S, D, STD, T
+FROM  S, D, STD
 WHERE (S.Snum = STD.Snum) AND
 (D.Dnum = STD.Dnum)
 
 UNION
 
 SELECT D.City
-FROM  S, D, STD, T
+FROM  S, D, STD
 WHERE (S.Snum = STD.Snum) AND
 (D.Dnum = STD.Dnum)
