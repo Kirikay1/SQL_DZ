@@ -22,16 +22,8 @@ WHERE (S.Snum = STD.Snum) AND
 (T.Tnum = STD.Tnum)
 GROUP BY S.Snum
 GO
---5
+--5 один из них, скорее вот этот
 SELECT S.City
-FROM  S, D, STD, T
-WHERE (S.Snum = STD.Snum) AND
-(D.Dnum = STD.Dnum) AND
-(T.Tnum = STD.Tnum)
-
-UNION
-
-SELECT T.City
 FROM  S, D, STD, T
 WHERE (S.Snum = STD.Snum) AND
 (D.Dnum = STD.Dnum) AND
@@ -44,3 +36,16 @@ FROM  S, D, STD, T
 WHERE (S.Snum = STD.Snum) AND
 (D.Dnum = STD.Dnum) AND
 (T.Tnum = STD.Tnum)
+GO
+--5 один из них
+SELECT S.City
+FROM  S, D, STD, T
+WHERE (S.Snum = STD.Snum) AND
+(D.Dnum = STD.Dnum)
+
+UNION
+
+SELECT D.City
+FROM  S, D, STD, T
+WHERE (S.Snum = STD.Snum) AND
+(D.Dnum = STD.Dnum)
