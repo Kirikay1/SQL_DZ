@@ -16,11 +16,11 @@ WHERE (T.Tnum = STD.Tnum) AND
 (STD.Dnum = 'D1')
 GO
 --4
-SELECT S.Sname, AVG(T.Price * STD.Kolvo) AS AVG_PRICE
-FROM T, S, STD, D
+SELECT S.Snum, AVG(T.Price * STD.Kolvo) AS AVG_PRICE
+FROM T, S, STD
 WHERE (S.Snum = STD.Snum) AND
 (T.Tnum = STD.Tnum)
-GROUP BY S.Sname
+GROUP BY S.Snum
 GO
 --5
 SELECT S.City
