@@ -99,7 +99,8 @@ CREATE PROC [UpdateLessonObjectLessonsAtDay](
     @day NVARCHAR (255),
 	@weekId INT,
 	@oldLessonObjectId INT,
-	@newLessonObjectId INT)
+	@newLessonObjectId INT,
+	@number INT)
 AS
 BEGIN
     declare @dayId int = (SELECT MAX(D.[Id]) 
@@ -108,6 +109,7 @@ BEGIN
 	UPDATE [LessonsAtDay] SET [LessonObjectId] = @newLessonObjectId
 	WHERE [LessonsAtDay].DayId = @dayId AND
 	[LessonsAtDay].WeekId = @weekId AND
-	[LessonsAtDay].LessonObjectId = @oldLessonObjectId;
+	[LessonsAtDay].LessonObjectId = @oldLessonObjectId AND
+	[LessonsAtDay].Number = @number;
 END;
 GO
