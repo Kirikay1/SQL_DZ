@@ -17,10 +17,15 @@ GO
 --2
 CREATE TRIGGER [DeleteLecturer]
 ON [Lecturer]
-INSTEAD OF DELETE
+AFTER DELETE
 AS
+DECLARE @id int
+SET @id = (SELECT Id FROM deleted)
 DELETE FROM [LessonObject]
-WHERE LecturerId = (SELECT Id FROM deleted)
+WHERE LecturerId = @id
+DELETE FROM [LessonsAtDay]
+WHERE LessonObjectId = (SELECT Id FROM [LessonObject]) AND
+(SELECT LecturerId FROM [LessonObject]) = @id
 
 DELETE FROM Lecturer 
 WHERE Id = 1
