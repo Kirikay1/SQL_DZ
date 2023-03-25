@@ -121,5 +121,5 @@ BEGIN
 END;
 GO
 
---EXEC [UpdateLessonObjectLessonsAtDay] "sefsetg", 1, 3, 2, 5
+--EXEC [UpdateLessonObjectId] "sefsetg", 1, 3, 2, 5
 --GO
