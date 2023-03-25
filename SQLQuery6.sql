@@ -74,13 +74,13 @@ CREATE PROC [LecturerDelete]
 	@id INT
 AS
 BEGIN
-	DELETE FROM [Lecturer]
-	WHERE [Lecturer].[Id] = @id
-	DELETE FROM [LessonObject]
-	WHERE [LessonObject].[LecturerId] = @id
 	DELETE FROM [LessonsAtDay]
 	WHERE LessonObjectId = (SELECT Id FROM [LessonObject]) AND
 	(SELECT LecturerId FROM [LessonObject]) = @id
+	DELETE FROM [LessonObject]
+	WHERE [LessonObject].[LecturerId] = @id
+	DELETE FROM [Lecturer]
+	WHERE [Lecturer].[Id] = @id
 END;
 GO
 
@@ -91,10 +91,10 @@ CREATE PROC [LessonObjectDelete]
 	@id INT
 AS
 BEGIN
-	DELETE FROM [LessonObject]
-	WHERE [LessonObject].[Id] = @id
 	DELETE FROM [LessonsAtDay]
 	WHERE [LessonsAtDay].[LessonObjectId] = @id
+	DELETE FROM [LessonObject]
+	WHERE [LessonObject].[Id] = @id
 END;
 GO
 
