@@ -1,17 +1,17 @@
 --1
-CREATE TRIGGER [insertNumberSix]
-ON [LessonObject]
+CREATE TRIGGER [InsertNumberSix]
+ON [LessonsAtDay]
 AFTER INSERT
 AS 
 DECLARE @id int
-SET @id = (SELECT Id FROM inserted)
-SELECT Id
-FROM LessonObject
+SET @id = (SELECT Number FROM inserted)
+SELECT Number
+FROM LessonsAtDay
 WHERE @id < 6 AND
-Id = @id
+Number = @id
 
-INSERT INTO LessonObject([Name], [LecturerId], [Description])
-VALUES('CFBCFBCF', 1, 'CFBCBCFGBCFB')
+INSERT INTO LessonsAtDay([DayId], [WeekId], [LessonObjectId], [Number])
+VALUES(1, 1, 1, 1)
 GO
 
 --2
