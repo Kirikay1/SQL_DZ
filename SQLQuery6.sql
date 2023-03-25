@@ -103,13 +103,16 @@ GO
 
 --4
 CREATE PROC [UpdateLessonObjectId] (
-    @dayId INT,
+    @day NVARCHAR (255),
 	@weekId INT,
 	@oldLessonObjectId INT,
 	@newLessonObjectId INT,
 	@number INT)
 AS
 BEGIN
+    declare @dayId int = (SELECT MAX(D.[Id]) 
+                          FROM DayType DT JOIN [Day] AS D 
+                          ON DT.[Type] = LOWER(@day))
 	UPDATE [LessonsAtDay] SET [LessonObjectId] = @newLessonObjectId
 	WHERE [LessonsAtDay].DayId = @dayId AND
 	[LessonsAtDay].WeekId = @weekId AND
@@ -117,3 +120,6 @@ BEGIN
 	[LessonsAtDay].Number = @number;
 END;
 GO
+
+--EXEC [UpdateLessonObjectLessonsAtDay] "sefsetg", 1, 3, 2, 5
+--GO
