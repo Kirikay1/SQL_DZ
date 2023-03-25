@@ -1,11 +1,11 @@
 --1
-CREATE TRIGGER [InsertNumberSix]
+CREATE TRIGGER [InsertNumber]
 ON [LessonsAtDay]
 AFTER INSERT
 AS 
 DECLARE @id int
 SET @id = (SELECT Number FROM inserted)
-SELECT Number
+SELECT DISTINCT Number
 FROM LessonsAtDay
 WHERE @id < 6 AND
 Number = @id
