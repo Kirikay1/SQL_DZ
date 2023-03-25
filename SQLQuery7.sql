@@ -1,5 +1,5 @@
 --1
-CREATE TRIGGER [InsertNumber]
+CREATE TRIGGER [GetNumber]
 ON [LessonsAtDay]
 AFTER INSERT
 AS 
